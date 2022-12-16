@@ -9,7 +9,8 @@ namespace HashTable
             Console.WriteLine("Creating a project for Hash Tables Problem");
 
             Console.WriteLine("Please the Pharase");
-            string phrase = Console.ReadLine();
+            string phrase = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";//Console.ReadLine();
+
             string[] inputPhraseArr = phrase.Split(" ");
             MyMapNode<int, string> hash = new MyMapNode<int, string>(inputPhraseArr.Length);
 
@@ -22,14 +23,22 @@ namespace HashTable
 
             Console.WriteLine("\nFrequency of Words ==> ");
 
-            string[] arr = new string[hash.size];
-            for (int i = 0; i < hash.size; i++)
+            for (int i = 0; i < inputPhraseArr.Length; i++)
             {
-                arr[i] = hash.Get(i);
+                inputPhraseArr[i] = hash.Get(i);
                 //arr[i] = arr[i].ToLower();
             }
+            hash.FreqOfWord(inputPhraseArr);
 
-            hash.FreqOfWord(arr);
+            string value = "avoidable";
+            hash.Remove(Array.IndexOf(inputPhraseArr, value));
+
+            for (int i = 0; i < hash.size; i++)
+            {
+                Console.WriteLine($"{i} index value : {hash.Get(i)}");
+            }
+            Console.ReadLine();
+
         }
     }
 }
